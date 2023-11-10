@@ -1,0 +1,221 @@
+<!DOCTYPE HTML>
+<html lang="cn" class="sidebar-visible no-js light">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>数据库时间字段 - 笔记记录</title>
+
+
+        <!-- Custom HTML head -->
+        
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff" />
+
+        <link rel="icon" href="../favicon.svg">
+        <link rel="shortcut icon" href="../favicon.png">
+        <link rel="stylesheet" href="../css/variables.css">
+        <link rel="stylesheet" href="../css/general.css">
+        <link rel="stylesheet" href="../css/chrome.css">
+        <link rel="stylesheet" href="../css/print.css" media="print">
+
+        <!-- Fonts -->
+        <link rel="stylesheet" href="../FontAwesome/css/font-awesome.css">
+        <link rel="stylesheet" href="../fonts/fonts.css">
+
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" href="../highlight.css">
+        <link rel="stylesheet" href="../tomorrow-night.css">
+        <link rel="stylesheet" href="../ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+
+    </head>
+    <body>
+    <div id="body-container">
+        <!-- Provide site root to javascript -->
+        <script>
+            var path_to_root = "../";
+            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "navy" : "light";
+        </script>
+
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script>
+            try {
+                var theme = localStorage.getItem('mdbook-theme');
+                var sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script>
+            var theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            var html = document.querySelector('html');
+            html.classList.remove('no-js')
+            html.classList.remove('light')
+            html.classList.add(theme);
+            html.classList.add('js');
+        </script>
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script>
+            var html = document.querySelector('html');
+            var sidebar = null;
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            } else {
+                sidebar = 'hidden';
+            }
+            html.classList.remove('sidebar-visible');
+            html.classList.add("sidebar-" + sidebar);
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <div class="sidebar-scrollbox">
+                <ol class="chapter"><li class="chapter-item expanded affix "><a href="../README.zh.html">介绍</a></li><li class="spacer"></li><li class="chapter-item expanded affix "><li class="part-title">笔记</li><li class="chapter-item expanded "><div><strong aria-hidden="true">1.</strong> mysql</div></li><li><ol class="section"><li class="chapter-item expanded "><a href="../mysql/索引.html"><strong aria-hidden="true">1.1.</strong> 索引</a></li><li class="chapter-item expanded "><a href="../mysql/性能分析.html"><strong aria-hidden="true">1.2.</strong> 性能分析</a></li><li class="chapter-item expanded "><a href="../mysql/datetime&timestamep.html" class="active"><strong aria-hidden="true">1.3.</strong> 数据库时间字段</a></li><li class="chapter-item expanded "><a href="../mysql/高可用.html"><strong aria-hidden="true">1.4.</strong> 高可用</a></li></ol></li><li class="chapter-item expanded "><div><strong aria-hidden="true">2.</strong> golang</div></li><li><ol class="section"><li class="chapter-item expanded "><a href="../golang/包管理.html"><strong aria-hidden="true">2.1.</strong> 包管理</a></li><li class="chapter-item expanded "><a href="../golang/构建自己的库.html"><strong aria-hidden="true">2.2.</strong> 构建自己的库</a></li><li class="chapter-item expanded "><a href="../golang/基础语法.html"><strong aria-hidden="true">2.3.</strong> 基础语法</a></li><li class="chapter-item expanded "><a href="../golang/交叉编译.html"><strong aria-hidden="true">2.4.</strong> 交叉编译</a></li><li class="chapter-item expanded "><a href="../golang/一致性hash.html"><strong aria-hidden="true">2.5.</strong> 一致性 hash</a></li><li class="chapter-item expanded "><a href="../golang/grpc.html"><strong aria-hidden="true">2.6.</strong> grpc</a></li><li class="chapter-item expanded "><a href="../golang/jwt.html"><strong aria-hidden="true">2.7.</strong> jwt</a></li><li class="chapter-item expanded "><a href="../golang/uuid.html"><strong aria-hidden="true">2.8.</strong> uuid</a></li></ol></li><li class="chapter-item expanded "><div><strong aria-hidden="true">3.</strong> 微服务</div></li><li class="chapter-item expanded "><div><strong aria-hidden="true">4.</strong> 操作系统</div></li><li class="chapter-item expanded "><div><strong aria-hidden="true">5.</strong> 生活日常</div></li><li class="spacer"></li><li class="chapter-item expanded affix "><li class="part-title">Title of Part</li></ol>
+            </div>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
+        </nav>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky bordered">
+                    <div class="left-buttons">
+                        <button id="sidebar-toggle" class="icon-button" type="button" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
+                        </button>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
+                        </button>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                        </ul>
+                        <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
+                            <i class="fa fa-search"></i>
+                        </button>
+                    </div>
+
+                    <h1 class="menu-title">笔记记录</h1>
+
+                    <div class="right-buttons">
+                        <a href="../print.html" title="Print this book" aria-label="Print this book">
+                            <i id="print-button" class="fa fa-print"></i>
+                        </a>
+
+                    </div>
+                </div>
+
+                <div id="search-wrapper" class="hidden">
+                    <form id="searchbar-outer" class="searchbar-outer">
+                        <input type="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                    </form>
+                    <div id="searchresults-outer" class="searchresults-outer hidden">
+                        <div id="searchresults-header" class="searchresults-header"></div>
+                        <ul id="searchresults">
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script>
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main>
+                        <h1 id="数据库的时间字段有以下几种保存类型"><a class="header" href="#数据库的时间字段有以下几种保存类型">数据库的时间字段有以下几种保存类型</a></h1>
+<h2 id="datetime"><a class="header" href="#datetime">DATETIME</a></h2>
+<ul>
+<li>存储的时间是服务器当前的时区的时间，查看mysql，存的是什么时间，查的就是什么时间 使用的时区 <code>show VARIABLES like '%time_zone%'</code></li>
+<li>datetime的存储范围是1000-01-01到9999-12-31</li>
+</ul>
+<h2 id="timestamep"><a class="header" href="#timestamep">TIMESTAMEP</a></h2>
+<ul>
+<li>存储的时间是 UTC 时间，是将服务器当前时间转换为UTC(世界时间)来存储，查询的时候又会将 UTC 时间转换为当前时间。假如当前在东八区，那么存储的时间就是当前时间减去8小时的时间，当数据库的时区发生变化，查出来的时间也从 UTC 时间转换成当前时区的时间。</li>
+<li>timestamp的存储范围是1970-01-01到2038-01-19，时间范围较少</li>
+</ul>
+<h2 id="int11"><a class="header" href="#int11">int(11)</a></h2>
+<ul>
+<li>存储的就是时间戳，是1970-01-01到至今的时间，时间戳有不同的精度，精确到 s 或者精确到 ms，这个需要根据业务需求来定，一般精确到 s 就够了，毕竟精确到 ms 会占用更多的存储空间，而且也不是很需要那么精确的时间。</li>
+<li>int(11)换算成的成时间就是 UTC 时间，所以在使用的时候，需要将 UTC 时间转换成当前时区的时间，这个时候就需要用到 <code>CONVERT_TZ</code> 函数了。例如<code>CONVERT_TZ(FROM_UNIXTIME(op.created), '+00:00','+8:00')</code>,这里先用<code>FROM_UNIXTIME</code>函数把时间戳转换成 UTC 时间，然后再用<code>CONVERT_TZ</code>函数将 UTC 时间转换成当前时区的时间。</li>
+</ul>
+<h1 id="时间戳和时间转换"><a class="header" href="#时间戳和时间转换">时间戳和时间转换</a></h1>
+<p>在这里 <code>DATE_FORMAT(CONVERT_TZ(FROM_UNIXTIME(op.created), '+00:00','+8:00'),'%Y-%m-%d')</code>就是把时间戳转换成时间，然后转换到对应的时区时间，再 format 处理成想要的时间格式。</p>
+<h1 id="设置时区"><a class="header" href="#设置时区">设置时区</a></h1>
+<pre><code>show VARIABLES like '%time_zone%'
+SET time_zone = '+08:00';
+
+</code></pre>
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                            <a rel="prev" href="../mysql/性能分析.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <i class="fa fa-angle-left"></i>
+                            </a>
+
+                            <a rel="next" href="../mysql/高可用.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                                <i class="fa fa-angle-right"></i>
+                            </a>
+
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                    <a rel="prev" href="../mysql/性能分析.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
+
+                    <a rel="next" href="../mysql/高可用.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                        <i class="fa fa-angle-right"></i>
+                    </a>
+            </nav>
+
+        </div>
+
+
+
+
+        <script>
+            window.playground_copyable = true;
+        </script>
+
+
+        <script src="../elasticlunr.min.js"></script>
+        <script src="../mark.min.js"></script>
+        <script src="../searcher.js"></script>
+
+        <script src="../clipboard.min.js"></script>
+        <script src="../highlight.js"></script>
+        <script src="../book.js"></script>
+
+        <!-- Custom JS scripts -->
+
+
+    </div>
+    </body>
+</html>

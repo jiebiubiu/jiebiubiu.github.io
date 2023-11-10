@@ -1,0 +1,217 @@
+<!DOCTYPE HTML>
+<html lang="cn" class="sidebar-visible no-js light">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>uuid - 笔记记录</title>
+
+
+        <!-- Custom HTML head -->
+        
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff" />
+
+        <link rel="icon" href="../favicon.svg">
+        <link rel="shortcut icon" href="../favicon.png">
+        <link rel="stylesheet" href="../css/variables.css">
+        <link rel="stylesheet" href="../css/general.css">
+        <link rel="stylesheet" href="../css/chrome.css">
+        <link rel="stylesheet" href="../css/print.css" media="print">
+
+        <!-- Fonts -->
+        <link rel="stylesheet" href="../FontAwesome/css/font-awesome.css">
+        <link rel="stylesheet" href="../fonts/fonts.css">
+
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" href="../highlight.css">
+        <link rel="stylesheet" href="../tomorrow-night.css">
+        <link rel="stylesheet" href="../ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+
+    </head>
+    <body>
+    <div id="body-container">
+        <!-- Provide site root to javascript -->
+        <script>
+            var path_to_root = "../";
+            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "navy" : "light";
+        </script>
+
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script>
+            try {
+                var theme = localStorage.getItem('mdbook-theme');
+                var sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script>
+            var theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            var html = document.querySelector('html');
+            html.classList.remove('no-js')
+            html.classList.remove('light')
+            html.classList.add(theme);
+            html.classList.add('js');
+        </script>
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script>
+            var html = document.querySelector('html');
+            var sidebar = null;
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            } else {
+                sidebar = 'hidden';
+            }
+            html.classList.remove('sidebar-visible');
+            html.classList.add("sidebar-" + sidebar);
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <div class="sidebar-scrollbox">
+                <ol class="chapter"><li class="chapter-item expanded affix "><a href="../README.zh.html">介绍</a></li><li class="spacer"></li><li class="chapter-item expanded affix "><li class="part-title">笔记</li><li class="chapter-item expanded "><div><strong aria-hidden="true">1.</strong> mysql</div></li><li><ol class="section"><li class="chapter-item expanded "><a href="../mysql/索引.html"><strong aria-hidden="true">1.1.</strong> 索引</a></li><li class="chapter-item expanded "><a href="../mysql/性能分析.html"><strong aria-hidden="true">1.2.</strong> 性能分析</a></li><li class="chapter-item expanded "><a href="../mysql/datetime&timestamep.html"><strong aria-hidden="true">1.3.</strong> 数据库时间字段</a></li><li class="chapter-item expanded "><a href="../mysql/高可用.html"><strong aria-hidden="true">1.4.</strong> 高可用</a></li></ol></li><li class="chapter-item expanded "><div><strong aria-hidden="true">2.</strong> golang</div></li><li><ol class="section"><li class="chapter-item expanded "><a href="../golang/包管理.html"><strong aria-hidden="true">2.1.</strong> 包管理</a></li><li class="chapter-item expanded "><a href="../golang/构建自己的库.html"><strong aria-hidden="true">2.2.</strong> 构建自己的库</a></li><li class="chapter-item expanded "><a href="../golang/基础语法.html"><strong aria-hidden="true">2.3.</strong> 基础语法</a></li><li class="chapter-item expanded "><a href="../golang/交叉编译.html"><strong aria-hidden="true">2.4.</strong> 交叉编译</a></li><li class="chapter-item expanded "><a href="../golang/一致性hash.html"><strong aria-hidden="true">2.5.</strong> 一致性 hash</a></li><li class="chapter-item expanded "><a href="../golang/grpc.html"><strong aria-hidden="true">2.6.</strong> grpc</a></li><li class="chapter-item expanded "><a href="../golang/jwt.html"><strong aria-hidden="true">2.7.</strong> jwt</a></li><li class="chapter-item expanded "><a href="../golang/uuid.html" class="active"><strong aria-hidden="true">2.8.</strong> uuid</a></li></ol></li><li class="chapter-item expanded "><div><strong aria-hidden="true">3.</strong> 微服务</div></li><li class="chapter-item expanded "><div><strong aria-hidden="true">4.</strong> 操作系统</div></li><li class="chapter-item expanded "><div><strong aria-hidden="true">5.</strong> 生活日常</div></li><li class="spacer"></li><li class="chapter-item expanded affix "><li class="part-title">Title of Part</li></ol>
+            </div>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
+        </nav>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky bordered">
+                    <div class="left-buttons">
+                        <button id="sidebar-toggle" class="icon-button" type="button" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
+                        </button>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
+                        </button>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                        </ul>
+                        <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
+                            <i class="fa fa-search"></i>
+                        </button>
+                    </div>
+
+                    <h1 class="menu-title">笔记记录</h1>
+
+                    <div class="right-buttons">
+                        <a href="../print.html" title="Print this book" aria-label="Print this book">
+                            <i id="print-button" class="fa fa-print"></i>
+                        </a>
+
+                    </div>
+                </div>
+
+                <div id="search-wrapper" class="hidden">
+                    <form id="searchbar-outer" class="searchbar-outer">
+                        <input type="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                    </form>
+                    <div id="searchresults-outer" class="searchresults-outer hidden">
+                        <div id="searchresults-header" class="searchresults-header"></div>
+                        <ul id="searchresults">
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script>
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main>
+                        <p>https://z.wiki/tech/uuid.html</p>
+<p>UUID的标准型式包含32个16进制数字，以连字号分为五段，形式为8-4-4-4-12的32个字符，</p>
+<p>如：550e8400-e29b-41d4-a716-446655440000。</p>
+<p><code>UUID</code>包含<code>32</code>个<code>16</code>进制数字，分为<code>5</code>段，<code>5</code>段长度分别为<code>8</code>、<code>4</code>、<code>4</code>、<code>4</code>、<code>12</code>，中间使用连字符连接。</p>
+<p>例如：<code>xxxxxxxx-xxxx-Mxxx-xxxx-xxxxxxxxxxxx</code></p>
+<p>其中<code>M</code>表示 <code>UUID</code>的版本,从 <a href="https://devtool.tech/uuid">uuid生成 (opens new window)</a>可以看出，<code>M</code>位置的值和版本是一致的。</p>
+<div class="table-wrapper"><table><thead><tr><th>名称</th><th>长度 （字节）</th><th>长度（16进制数字码长）</th><th>说明</th></tr></thead><tbody>
+<tr><td>time_low</td><td>4</td><td>8</td><td>整数：低位 32 bits 时间</td></tr>
+<tr><td>time_mid</td><td>2</td><td>4</td><td>整数：中间位 16 bits 时间</td></tr>
+<tr><td>time_hi_and_version</td><td>2</td><td>4</td><td>最高有效位中的 4 bits“版本”，后面是高 12 bits 的时间</td></tr>
+<tr><td>clock_seq_hi_and_res clock_seq_low</td><td>2</td><td>4</td><td>最高有效位为 1-3 bits“变体”，后跟13-15 bits 时钟序列</td></tr>
+<tr><td>node</td><td>6</td><td>12</td><td>48 bits 节点 ID</td></tr>
+</tbody></table>
+</div>
+<p>UUID由以下几部分的组合：
+（1）当前日期和时间，UUID的第一个部分与时间有关，如果你在生成一个UUID之后，过几秒又生成一个UUID，则第一个部分不同，其余相同。
+（2）时钟序列。
+（3）全局唯一的IEEE机器识别号，如果有网卡，从网卡MAC地址获得，没有网卡以其他方式获得。</p>
+<h2 id="uuid-version-1基于时间的uuid"><a class="header" href="#uuid-version-1基于时间的uuid">UUID Version 1：基于时间的UUID</a></h2>
+<h2 id="uuid-version-2dce安全的uuid"><a class="header" href="#uuid-version-2dce安全的uuid">UUID Version 2：DCE安全的UUID</a></h2>
+<p>DCE（Distributed Computing Environment）安全的UUID和基于时间的UUID算法相同，但会把时间戳的前4位置换为POSIX的UID或GID。这个版本的UUID在实际中较少用到。</p>
+<h2 id="uuid-version-3基于名字的uuidmd5"><a class="header" href="#uuid-version-3基于名字的uuidmd5">UUID Version 3：基于名字的UUID（MD5）</a></h2>
+<p>基于名字的UUID通过计算名字和名字空间的MD5散列值得到。这个版本的UUID保证了：相同名字空间中不同名字生成的UUID的唯一性；不同名字空间中的UUID的唯一性；相同名字空间中相同名字的UUID重复生成是相同的。</p>
+<h2 id="uuid-version-4随机uuid"><a class="header" href="#uuid-version-4随机uuid">UUID Version 4：随机UUID</a></h2>
+<h2 id="uuid-version-5基于名字的uuidsha1"><a class="header" href="#uuid-version-5基于名字的uuidsha1">UUID Version 5：基于名字的UUID（SHA1）</a></h2>
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                            <a rel="prev" href="../golang/jwt.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <i class="fa fa-angle-left"></i>
+                            </a>
+
+
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                    <a rel="prev" href="../golang/jwt.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
+
+            </nav>
+
+        </div>
+
+
+
+
+        <script>
+            window.playground_copyable = true;
+        </script>
+
+
+        <script src="../elasticlunr.min.js"></script>
+        <script src="../mark.min.js"></script>
+        <script src="../searcher.js"></script>
+
+        <script src="../clipboard.min.js"></script>
+        <script src="../highlight.js"></script>
+        <script src="../book.js"></script>
+
+        <!-- Custom JS scripts -->
+
+
+    </div>
+    </body>
+</html>
